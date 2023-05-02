@@ -31,9 +31,10 @@ public class KullaniciController {
           String ad = BAUtils.readString("Kullanicinin ismini giriniz: ");
           List<Kullanici> kullaniciList = kullaniciService.findByAd(ad);
           if(kullaniciList != null){
-              for (Kullanici kullanici : kullaniciList) {
-               kullanici.getOlusturduguYarismalar().forEach(System.out::println);
-          }
+            for (Kullanici kullanici : kullaniciList) {
+                  System.out.println(kullanici.getAd() + " isimli kullanici");
+                 kullanici.getOlusturduguYarismalar().forEach(x -> {System.out.println(x.getAd() + " isimli  yarismayi olustumus..");});
+              }
           }else{
               System.out.println("Boyle bir kullanici yok.");
           }
@@ -46,8 +47,9 @@ public class KullaniciController {
           List<Kullanici> kullaniciList = kullaniciService.findByAd(ad);
           if(kullaniciList != null){
               for (Kullanici kullanici : kullaniciList) {
-                  System.out.println(kullanici.getKatildigiYarismalar());
-          }
+                  System.out.println(kullanici.getAd() + " isimli kullanici");
+                 kullanici.getKatildigiYarismalar().forEach(x -> {System.out.println(x.getYarisma().getAd() + " isimli  yarismayi katilmistir");});
+              }
           }else{
               System.out.println("Boyle bir kullanici yok.");
           }
